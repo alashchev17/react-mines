@@ -1,0 +1,36 @@
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  //margin: 10px auto 0 auto;
+  max-width: 940px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(28, 39, 60, 0.05);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.column-wrapper {
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 50%;
+  }
+}

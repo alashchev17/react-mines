@@ -1,0 +1,19 @@
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #7987a1;
+  background-color: #7987a1;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.15s ease-in-out;
+  &--inline {
+    display: inline-block;
+    width: auto;
+  }
+  &:hover {
+    background-color: darken(#7987a1, 7%);
+  }
+}

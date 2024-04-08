@@ -1,0 +1,17 @@
+.text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #001737;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #e3e7ed;
+  border-radius: 4px;
+  &-item {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
