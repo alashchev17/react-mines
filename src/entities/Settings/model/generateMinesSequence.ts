@@ -27,6 +27,5 @@ export const generateMinesSequence = ({
   }
   const shuffledMinesSequence = shuffleArray(tempMinesSequence);
   setMinesSequence(shuffledMinesSequence);
-  console.log("tempMinesSequence", shuffledMinesSequence);
   return shuffledMinesSequence;
 };

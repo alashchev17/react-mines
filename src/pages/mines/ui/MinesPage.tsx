@@ -42,7 +42,6 @@ export const MinesPage = () => {
       };
     });
     setMinesSequence(newMinesSequence);
-    console.log("newMinesSequence", newMinesSequence);
   };
 
   return (
