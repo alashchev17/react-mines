@@ -8,12 +8,21 @@
   background-color: #7987a1;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.15s ease-in-out;
+  transition:
+    background-color 0.15s ease-in-out,
+    color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
   &--inline {
     display: inline-block;
     width: auto;
   }
   &:hover {
     background-color: darken(#7987a1, 7%);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #c0ccda;
+    color: #7987a1;
+    border-color: #7987a1;
   }
 }

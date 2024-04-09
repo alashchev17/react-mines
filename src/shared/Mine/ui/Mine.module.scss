@@ -1,0 +1,51 @@
+.mine {
+  width: 65px;
+  height: 65px;
+  border-radius: 4px;
+  background-color: #f4f5f8;
+  border: 1px solid #c0ccda;
+  color: #dc3545;
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+  &--revealed {
+    &-bomb {
+      color: #dc3545;
+      background-color: #dc354575;
+      border-color: #dc3545;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url("@/assets/bomb.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    &-correct {
+      color: #10b759;
+      background-color: #0cc95f69;
+      border-color: #10b759;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url("@/assets/correct.svg");
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}

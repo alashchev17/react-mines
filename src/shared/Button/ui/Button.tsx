@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ButtonStyle from "./Button.module.scss";
+import styles from "./Button.module.scss";
 
 type ButtonProps = {
   children: string;
@@ -19,8 +19,8 @@ export const Button: FC<ButtonProps> = ({
       disabled={isDisabled}
       className={
         isInline
-          ? `${ButtonStyle.button} ${ButtonStyle["button--inline"]}`
-          : ButtonStyle.button
+          ? `${styles.button} ${styles["button--inline"]}`
+          : styles.button
       }
     >
       {children}

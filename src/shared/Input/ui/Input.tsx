@@ -7,6 +7,7 @@ type InputProps = {
   type: "range" | "text" | "number" | "password";
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isDisabled?: boolean;
   range?: {
     min: number;
     max: number;
@@ -15,6 +16,7 @@ type InputProps = {
 };
 
 export const Input: FC<InputProps> = ({
+  isDisabled,
   type,
   value,
   onChange,
@@ -46,6 +48,7 @@ export const Input: FC<InputProps> = ({
       min={range?.min}
       max={range?.max}
       step={range?.step}
+      disabled={isDisabled}
     />
   );
 };

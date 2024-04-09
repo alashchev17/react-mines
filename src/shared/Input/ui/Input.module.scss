@@ -1,6 +1,12 @@
 .input {
   &-range {
     width: 100%;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #c0ccda;
+      color: #7987a1;
+      border-color: #7987a1;
+    }
   }
   &-text {
     display: inline-block;
@@ -9,9 +15,27 @@
     text-align: center;
     border: 1px solid #c0ccda;
     border-radius: 4px;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #c0ccda;
+      color: #7987a1;
+      border-color: #7987a1;
+    }
   }
   &-number {
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #c0ccda;
+      color: #7987a1;
+      border-color: #7987a1;
+    }
   }
   &-password {
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #c0ccda;
+      color: #7987a1;
+      border-color: #7987a1;
+    }
   }
 }
