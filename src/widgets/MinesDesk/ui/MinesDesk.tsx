@@ -4,17 +4,41 @@ import { useSettings } from "@/entities/Settings";
 
 export const MinesDesk = () => {
   const {
-    isGameInitiated,
+    DEFAULT_MINES_SEQUENCE,
+    AMOUNT_OF_CELLS,
+    amountOfBombs,
+    mineCounter,
     minesSequence,
+    isGameInitiated,
+    balance,
+    winRates,
+    setBalance,
     setMinesSequence,
     setIsGameInitiated,
+    setWinAmount,
+    setMineCounter,
   } = useSettings();
   const handleMineClick = (id: number) => {
     if (!isGameInitiated) return;
+    if (minesSequence[id].isRevealed) return;
     const newMinesSequence = [...minesSequence];
+
+    setMineCounter(mineCounter + 1);
     newMinesSequence[id].isRevealed = true;
+
+    setWinAmount(winRates[mineCounter]);
+    if (mineCounter + 1 === AMOUNT_OF_CELLS - amountOfBombs) {
+      setIsGameInitiated(false);
+      setBalance(balance + winRates[mineCounter]);
+      setWinAmount(0);
+      setMineCounter(0);
+      setMinesSequence(DEFAULT_MINES_SEQUENCE);
+      return;
+    }
     if (newMinesSequence[id].isBomb) {
       setIsGameInitiated(false);
+      setWinAmount(0);
+      setMineCounter(0);
     }
     setMinesSequence(newMinesSequence);
   };

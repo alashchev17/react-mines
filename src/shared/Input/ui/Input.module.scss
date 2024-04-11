@@ -23,6 +23,12 @@
     }
   }
   &-number {
+    display: inline-block;
+    max-width: 133px;
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px solid #c0ccda;
+    border-radius: 4px;
     &:disabled {
       cursor: not-allowed;
       background-color: #c0ccda;

@@ -6,7 +6,14 @@ import { updateAmountOfBombs } from "@/features/ChangeBombsAmount";
 import styles from "./ChangeBombsAmount.module.scss";
 
 export const ChangeBombsAmount = () => {
-  const { setAmountOfBombs, amountOfBombs, isGameInitiated } = useSettings();
+  const {
+    setAmountOfBombs,
+    amountOfBombs,
+    isGameInitiated,
+    setCurrentCoefficients,
+    gameCredit,
+    setWinRates,
+  } = useSettings();
   return (
     <>
       <span className={styles.text}>Количество бомб: {amountOfBombs}</span>
@@ -15,7 +22,13 @@ export const ChangeBombsAmount = () => {
         value={amountOfBombs.toString()}
         range={{ min: 2, max: 24, step: 1 }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          updateAmountOfBombs(e.target.value, setAmountOfBombs)
+          updateAmountOfBombs({
+            amount: e.target.value,
+            setAmountOfBombs,
+            setCurrentCoefficients,
+            setWinRates,
+            gameCredit,
+          })
         }
         isDisabled={isGameInitiated}
       />

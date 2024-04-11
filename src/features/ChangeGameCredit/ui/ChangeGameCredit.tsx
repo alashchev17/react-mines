@@ -7,21 +7,45 @@ import { Button } from "@/shared/Button";
 import { Input } from "@/shared/Input";
 
 export const ChangeGameCredit = () => {
-  const { balance, gameCredit, setGameCredit, isGameInitiated } = useSettings();
+  const {
+    balance,
+    gameCredit,
+    setGameCredit,
+    isGameInitiated,
+    currentCoefficients,
+    setCurrentCoefficients,
+    setWinRates,
+  } = useSettings();
   return (
     <>
       <span className={styles["text"]}>Размер игры:</span>
       <div className={styles["wrapper"]}>
         <div className={styles["wrapper-item"]}>
           <Button
-            onClick={() => updateGameCredit(balance, setGameCredit)}
+            onClick={() =>
+              updateGameCredit({
+                amount: balance,
+                setGameCredit,
+                setCurrentCoefficients,
+                currentCoefficients,
+                setWinRates,
+              })
+            }
             isInline
             isDisabled={isGameInitiated}
           >
             MAX
           </Button>
           <Button
-            onClick={() => updateGameCredit(1, setGameCredit)}
+            onClick={() =>
+              updateGameCredit({
+                amount: 1,
+                setGameCredit,
+                setCurrentCoefficients,
+                currentCoefficients,
+                setWinRates,
+              })
+            }
             isInline
             isDisabled={isGameInitiated}
           >
@@ -32,17 +56,27 @@ export const ChangeGameCredit = () => {
           type="text"
           value={gameCredit.toString()}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            updateGameCredit(Number(e.target.value), setGameCredit)
+            updateGameCredit({
+              amount: Number(e.target.value),
+              setGameCredit,
+              setCurrentCoefficients,
+              currentCoefficients,
+              setWinRates,
+            })
           }
+          range={{ min: 1, max: 1000000, step: 1 }}
           isDisabled={isGameInitiated}
         />
         <div className={styles["wrapper-item"]}>
           <Button
             onClick={() =>
-              updateGameCredit(
-                gameCredit * 2 < balance ? gameCredit * 2 : balance,
+              updateGameCredit({
+                amount: gameCredit * 2 < balance ? gameCredit * 2 : balance,
                 setGameCredit,
-              )
+                setCurrentCoefficients,
+                currentCoefficients,
+                setWinRates,
+              })
             }
             isInline
             isDisabled={isGameInitiated}
@@ -51,7 +85,13 @@ export const ChangeGameCredit = () => {
           </Button>
           <Button
             onClick={() =>
-              updateGameCredit(Math.floor(gameCredit / 2), setGameCredit)
+              updateGameCredit({
+                amount: Math.floor(gameCredit / 2),
+                setGameCredit,
+                setCurrentCoefficients,
+                currentCoefficients,
+                setWinRates,
+              })
             }
             isInline
             isDisabled={isGameInitiated}

@@ -4,21 +4,24 @@ import { Header } from "./Header";
 import { initiateNewGame } from "@/pages/mines";
 import { MinesSettings } from "@/widgets/MinesSettings";
 import { MinesDesk } from "@/widgets/MinesDesk";
-import { useSettings } from "@/entities/Settings";
+import { useSettings, generateMinesSequence } from "@/entities/Settings";
 import { Button } from "@/shared/Button";
-import { generateMinesSequence } from "@/entities/Settings/model/generateMinesSequence.ts";
 
 export const MinesPage = () => {
   const {
+    DEFAULT_MINES_SEQUENCE,
     isGameInitiated,
-    setIsGameInitiated,
-    setBalance,
+    winAmount,
     balance,
     gameCredit,
     AMOUNT_OF_CELLS,
     minesSequence,
-    setMinesSequence,
     amountOfBombs,
+    setIsGameInitiated,
+    setBalance,
+    setMinesSequence,
+    setWinAmount,
+    setMineCounter,
   } = useSettings();
 
   const handleGameStart = () => {
@@ -44,6 +47,16 @@ export const MinesPage = () => {
     setMinesSequence(newMinesSequence);
   };
 
+  const handleStopGame = () => {
+    if (isGameInitiated) {
+      setBalance(balance + winAmount);
+      setIsGameInitiated(false);
+      setWinAmount(0);
+      setMineCounter(0);
+      setMinesSequence(DEFAULT_MINES_SEQUENCE);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Header />
@@ -53,15 +66,27 @@ export const MinesPage = () => {
             {/* Место для виджета настройки игры */}
             <MinesSettings />
 
-            <Button
-              onClick={handleGameStart}
-              isDisabled={isGameInitiated || gameCredit > balance}
-            >
-              Начать игру
-            </Button>
-            <Button onClick={handleRevealMines} isDisabled={!isGameInitiated}>
-              Вскрыть мины
-            </Button>
+            {!isGameInitiated && (
+              <Button
+                onClick={handleGameStart}
+                isDisabled={gameCredit > balance}
+              >
+                Начать игру
+              </Button>
+            )}
+            {isGameInitiated && (
+              <>
+                <Button onClick={handleStopGame} isDisabled={winAmount === 0}>
+                  {isGameInitiated ? `Забрать ${winAmount}` : "Забрать выигрыш"}
+                </Button>
+                <Button
+                  onClick={handleRevealMines}
+                  isDisabled={!isGameInitiated}
+                >
+                  Вскрыть мины
+                </Button>
+              </>
+            )}
           </div>
           <div className={styles["column-wrapper__item"]}>
             {/* Место для виджета с игрой */}
