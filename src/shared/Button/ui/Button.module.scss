@@ -12,9 +12,16 @@
     background-color 0.15s ease-in-out,
     color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
+  @media only screen and (max-width: 420px) {
+    font-size: 14px;
+  }
   &--inline {
     display: inline-block;
     width: auto;
+    @media only screen and (max-width: 420px) {
+      padding: 7.5px 10px;
+      font-size: 12px;
+    }
   }
   &:hover {
     background-color: darken(#7987a1, 7%);

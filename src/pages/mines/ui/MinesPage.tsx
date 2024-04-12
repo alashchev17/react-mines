@@ -4,7 +4,12 @@ import { Header } from "./Header";
 import { initiateNewGame } from "@/pages/mines";
 import { MinesSettings } from "@/widgets/MinesSettings";
 import { MinesDesk } from "@/widgets/MinesDesk";
-import { useSettings, generateMinesSequence } from "@/entities/Settings";
+import { MinesSteps } from "@/widgets/MinesSteps";
+import {
+  useSettings,
+  generateMinesSequence,
+  roundToTwoDecimals,
+} from "@/entities/Settings";
 import { Button } from "@/shared/Button";
 
 export const MinesPage = () => {
@@ -15,7 +20,6 @@ export const MinesPage = () => {
     balance,
     gameCredit,
     AMOUNT_OF_CELLS,
-    minesSequence,
     amountOfBombs,
     setIsGameInitiated,
     setBalance,
@@ -37,7 +41,7 @@ export const MinesPage = () => {
       amountOfBombs,
     });
   };
-  const handleRevealMines = () => {
+  /*const handleRevealMines = () => {
     const newMinesSequence = minesSequence.map((mine) => {
       return {
         ...mine,
@@ -46,10 +50,11 @@ export const MinesPage = () => {
     });
     setMinesSequence(newMinesSequence);
   };
+  */
 
   const handleStopGame = () => {
     if (isGameInitiated) {
-      setBalance(balance + winAmount);
+      setBalance(roundToTwoDecimals(balance + winAmount));
       setIsGameInitiated(false);
       setWinAmount(0);
       setMineCounter(0);
@@ -79,18 +84,19 @@ export const MinesPage = () => {
                 <Button onClick={handleStopGame} isDisabled={winAmount === 0}>
                   {isGameInitiated ? `Забрать ${winAmount}` : "Забрать выигрыш"}
                 </Button>
-                <Button
-                  onClick={handleRevealMines}
-                  isDisabled={!isGameInitiated}
-                >
-                  Вскрыть мины
-                </Button>
+                {/*<Button*/}
+                {/*  onClick={handleRevealMines}*/}
+                {/*  isDisabled={!isGameInitiated}*/}
+                {/*>*/}
+                {/*  Вскрыть мины*/}
+                {/*</Button>*/}
               </>
             )}
           </div>
           <div className={styles["column-wrapper__item"]}>
             {/* Место для виджета с игрой */}
             <MinesDesk />
+            <MinesSteps />
           </div>
         </div>
       </div>

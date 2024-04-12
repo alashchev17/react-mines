@@ -21,6 +21,11 @@
       color: #7987a1;
       border-color: #7987a1;
     }
+    @media only screen and (max-width: 420px) {
+      max-width: 75px;
+      font-size: 12px;
+      padding: 5px 10px;
+    }
   }
   &-number {
     display: inline-block;
@@ -34,6 +39,11 @@
       background-color: #c0ccda;
       color: #7987a1;
       border-color: #7987a1;
+    }
+    @media only screen and (max-width: 420px) {
+      max-width: 75px;
+      font-size: 12px;
+      padding: 5px 10px;
     }
   }
   &-password {

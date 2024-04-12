@@ -1,6 +1,10 @@
 .mines-desk {
-  max-width: 357px;
+  max-width: 357px; // 274px
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  @media only screen and (max-width: 420px) {
+    max-width: 299px;
+    gap: 6px;
+  }
 }

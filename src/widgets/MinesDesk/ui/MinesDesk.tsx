@@ -1,6 +1,6 @@
 import styles from "./MinesDesk.module.scss";
 import { Mine } from "@/shared/Mine";
-import { useSettings } from "@/entities/Settings";
+import { useSettings, roundToTwoDecimals } from "@/entities/Settings";
 
 export const MinesDesk = () => {
   const {
@@ -22,24 +22,26 @@ export const MinesDesk = () => {
     if (!isGameInitiated) return;
     if (minesSequence[id].isRevealed) return;
     const newMinesSequence = [...minesSequence];
-
     setMineCounter(mineCounter + 1);
     newMinesSequence[id].isRevealed = true;
+
+    if (newMinesSequence[id].isBomb) {
+      setIsGameInitiated(false);
+      setWinAmount(0);
+      setMineCounter(0);
+      return;
+    }
 
     setWinAmount(winRates[mineCounter]);
     if (mineCounter + 1 === AMOUNT_OF_CELLS - amountOfBombs) {
       setIsGameInitiated(false);
-      setBalance(balance + winRates[mineCounter]);
+      setBalance(roundToTwoDecimals(balance + winRates[mineCounter]));
       setWinAmount(0);
       setMineCounter(0);
       setMinesSequence(DEFAULT_MINES_SEQUENCE);
       return;
     }
-    if (newMinesSequence[id].isBomb) {
-      setIsGameInitiated(false);
-      setWinAmount(0);
-      setMineCounter(0);
-    }
+
     setMinesSequence(newMinesSequence);
   };
   return (

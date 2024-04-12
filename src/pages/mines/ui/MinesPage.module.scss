@@ -9,6 +9,12 @@
   background-color: #ffffff;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(28, 39, 60, 0.05);
+  @media only screen and (max-width: 1024px) {
+    position: static;
+    top: unset;
+    left: unset;
+    transform: unset;
+  }
 }
 
 .wrapper {
@@ -27,11 +33,25 @@
   width: 100%;
   align-items: flex-start;
   justify-content: space-between;
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
   &__item {
     display: flex;
     flex-direction: column;
     gap: 15px;
     max-width: 50%;
     width: 100%;
+    @media only screen and (max-width: 1024px) {
+      max-width: 50%;
+      justify-content: center;
+      align-items: center;
+    }
+    @media only screen and (max-width: 768px) {
+      max-width: 100%;
+    }
   }
 }
