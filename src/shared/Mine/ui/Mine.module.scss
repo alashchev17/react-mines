@@ -60,4 +60,54 @@
       }
     }
   }
+  &--statistics {
+    &-correct {
+      color: #10b759;
+      background-color: #0cc95f69;
+      border-color: #10b759;
+      position: relative;
+      opacity: 0.3;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url("@/assets/correct.svg");
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        @media only screen and (max-width: 420px) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    &-bomb {
+      color: #dc3545;
+      background-color: #dc354575;
+      border-color: #dc3545;
+      position: relative;
+      opacity: 0.3;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url("@/assets/bomb.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 30px;
+        height: 30px;
+        @media only screen and (max-width: 420px) {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { TMinesSequence } from "@/entities/Settings";
+import { TMinesSequence, TMinesStatistics } from "@/entities/Settings";
 
 type SettingsContextType = {
   DEFAULT_MINES_SEQUENCE: TMinesSequence[];
@@ -8,6 +8,7 @@ type SettingsContextType = {
   balance: number;
   isGameInitiated: boolean;
   minesSequence: TMinesSequence[];
+  minesStatistics: TMinesStatistics;
   winAmount: number;
   mineCounter: number;
   currentCoefficients: number[];
@@ -18,6 +19,7 @@ type SettingsContextType = {
   gameCredit: number;
   setGameCredit: (amount: number) => void;
   setMinesSequence: (sequence: TMinesSequence[]) => void;
+  setMinesStatistics: (stats: TMinesStatistics) => void;
   setWinAmount: (amount: number) => void;
   setMineCounter: (amount: number) => void;
   setCurrentCoefficients: (coefficients: number[]) => void;
@@ -67,6 +69,16 @@ export const SettingsProvider = ({ children }: SettingsProviderProps) => {
   const [minesSequence, setMinesSequence] = useState<TMinesSequence[]>(
     DEFAULT_MINES_SEQUENCE,
   );
+  const [minesStatistics, setMinesStatistics] = useState<TMinesStatistics>({
+    isEmpty: true,
+    isVisible: false,
+    isLose: false,
+    gameCredit: 0,
+    winAmount: 0,
+    winRates: [],
+    mineCounter: 0,
+    minesSequence: [],
+  } as TMinesStatistics);
   const [mineCounter, setMineCounter] = useState(0);
   const [currentCoefficients, setCurrentCoefficients] = useState<number[]>([
     1.14, 1.3, 1.49, 1.73, 2.02, 2.37, 2.82, 3.38, 4.11, 5.05, 6.32, 8.04,
@@ -87,6 +99,7 @@ export const SettingsProvider = ({ children }: SettingsProviderProps) => {
         gameCredit,
         isGameInitiated,
         minesSequence,
+        minesStatistics,
         winAmount,
         mineCounter,
         currentCoefficients,
@@ -96,6 +109,7 @@ export const SettingsProvider = ({ children }: SettingsProviderProps) => {
         setGameCredit,
         setIsGameInitiated,
         setMinesSequence,
+        setMinesStatistics,
         setWinAmount,
         setMineCounter,
         setCurrentCoefficients,
