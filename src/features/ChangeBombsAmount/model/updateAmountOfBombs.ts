@@ -21,7 +21,7 @@ export const updateAmountOfBombs = ({
   setCurrentCoefficients(coefficientsObject.coefficients);
   setWinRates(
     coefficientsObject.coefficients.map((el) =>
-      roundToTwoDecimals(el * gameCredit),
+      Number(roundToTwoDecimals(el * gameCredit)),
     ),
   );
 };

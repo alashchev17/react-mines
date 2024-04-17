@@ -13,7 +13,7 @@ export const updateGameCredit = ({
   setWinRates: (rates: number[]) => void;
 }) => {
   const updatedCoefficientsWithNewGameCredit = currentCoefficients.map((el) =>
-    roundToTwoDecimals(el * (amount < 1 ? 1 : amount)),
+    Number(roundToTwoDecimals(el * (amount < 1 ? 1 : amount))),
   );
   setWinRates(updatedCoefficientsWithNewGameCredit);
   setGameCredit(amount < 1 ? 1 : amount);
