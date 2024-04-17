@@ -75,7 +75,9 @@ export const MinesStatistics = () => {
             />
           </div>
         </div>
-        <MinesDesk key={"mines-statistics"} isStatistics={true} />
+        <div className={styles["modal__desk"]}>
+          <MinesDesk key={"mines-statistics"} isStatistics={true} />
+        </div>
       </div>
     </div>
   );
