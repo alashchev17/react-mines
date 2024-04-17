@@ -104,6 +104,13 @@ export const MinesPage = () => {
                   >
                     Посмотреть результаты
                   </Button>
+                  <Button
+                    onClick={() => setBalance(balance + 100)}
+                    isDisabled={balance !== 0}
+                    isInline
+                  >
+                    Восстановить баланс
+                  </Button>
                 </>
               )}
               {isGameInitiated && (
